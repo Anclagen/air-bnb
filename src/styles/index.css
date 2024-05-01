@@ -73,3 +73,16 @@ body[data-bs-theme="light"] #search:hover {
   color: white;
   text-align: center;
 }
+
+.card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-img-top {
+  height: 170px;
+  object-fit: cover;
+  max-height: 100%;
+}
