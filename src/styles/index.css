@@ -1,3 +1,12 @@
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 header {
   height: 71px;
 }
@@ -14,14 +23,53 @@ header {
   box-shadow: 0 0 10px rgba(54, 123, 146, 0.1);
 }
 
+.bg-teal,
 nav {
   background-color: #c1f3f4;
 }
 
-body[data-bs-theme="dark"] {
-  background-color: #1c2122;
+body[data-bs-theme="dark"],
+body[data-bs-theme="dark"] .banner-content {
+  background-color: #223d43;
+  color: white;
 }
 
-body[data-bs-theme="light"] {
+body[data-bs-theme="light"],
+body[data-bs-theme="light"] .banner-content {
   background-color: #eeeeee;
+  color: black;
+}
+
+body[data-bs-theme="light"] .banner-content {
+  background-color: #c1f3f4;
+  color: black;
+}
+
+body[data-bs-theme="light"] .btn-primary {
+  background-color: #223d43;
+  color: white;
+  border-color: #223d43;
+}
+
+body[data-bs-theme="dark"] .btn-primary {
+  background-color: #c1f3f4;
+  color: black;
+  border-color: #c1f3f4;
+}
+
+body[data-bs-theme="light"] #theme:hover,
+body[data-bs-theme="light"] #search:hover {
+  color: #eeeeee;
+}
+
+.banner {
+  background-image: url("/src/assets/images/AI-sunset-beach-properties.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
 }
