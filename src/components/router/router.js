@@ -1,6 +1,7 @@
 import { Home } from "../../pages/home/index.js";
 import { Profile } from "../../pages/profile/index.js";
-import { Venues } from "../../pages/venues/index.js";
+import { Map } from "../../pages/map/index.js";
+import { Auth } from "../../pages/auth/index.js";
 import { loadMap } from "../map/venueMap.js";
 
 export function Router() {
@@ -8,14 +9,23 @@ export function Router() {
   // Render page
   switch (window.location.hash) {
     case "":
-      return root.html(Home());
+      root.html(Home());
+      return;
     case "#profile":
       root.html(Profile());
+      return;
+    case "#map":
+      root.html(Map());
       loadMap();
       return;
-    case "#venues":
-      return root.html(Venues());
+    case "#auth":
+    case "#auth?state=login":
+    case "#auth?state=register":
+      root.html(Auth());
+      return;
     default:
-      return root.html(Home());
+      console.log("default");
+      root.html(Home());
+      return;
   }
 }

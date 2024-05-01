@@ -1,0 +1,27 @@
+header {
+  height: 71px;
+}
+
+.logo {
+  height: 45px;
+}
+
+.active {
+  font-weight: 700;
+}
+
+.shadow {
+  box-shadow: 0 0 10px rgba(54, 123, 146, 0.1);
+}
+
+nav {
+  background-color: #c1f3f4;
+}
+
+body[data-bs-theme="dark"] {
+  background-color: #1c2122;
+}
+
+body[data-bs-theme="light"] {
+  background-color: #eeeeee;
+}

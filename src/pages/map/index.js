@@ -1,6 +1,6 @@
-export function Venues() {
+export function Map() {
   let content = `<div>
-      <h1>Venues</h1>
+      <h1>Map</h1>
       <div id="venueMap" style="height: 100vh;"></div>
     </div>`;
 

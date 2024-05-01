@@ -28,12 +28,9 @@ export function Theme() {
   } else {
     localStorage.setItem("theme", "dark");
   }
-
   themeIcon.html(toggleIcon(theme));
 
   // Toggle theme
-
-  console.log(themeToggle, theme);
   themeToggle.click(function () {
     console.log("clicked");
     const newTheme = $("body").attr("data-bs-theme") === "dark" ? "light" : "dark";

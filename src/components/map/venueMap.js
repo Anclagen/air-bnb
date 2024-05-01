@@ -36,5 +36,3 @@ export async function loadMap() {
 
   L.marker([33, 34]).addTo(mymap).bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
 }
-
-loadMap();
