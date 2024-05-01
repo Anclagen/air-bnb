@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- Meta Tags -->
+    <title>Holidaze</title>
+    <meta name="description" content="Holidaze is an accommodation booking site. Allowing users to book hotels, guesthouses, and B&Bs all over the world." />
+    <link rel="icon" href="src/assets/logos/Holidays-standalone-teal-circle.png" />
     <!-- jQuery -->
     <script src="src/frame-and-libs/jquery-3.7.1.min.js" defer></script>
     <!-- Bootstrap -->
@@ -18,7 +21,7 @@
   </head>
   <body data-bs-theme="dark">
     <header>
-      <nav class="navbar navbar-expand-lg fixed-top shadow-sm fs-4" data-bs-theme="light">
+      <nav class="navbar navbar-expand-md fixed-top z-3 shadow-sm fs-4" data-bs-theme="light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img src="src/assets/logos/holidaze-full-logo-transparent-small.png" alt="" class="d-inline-block logo" />
@@ -45,7 +48,7 @@
                 <a class="nav-link active text-black" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-black" href="#Map">Map</a>
+                <a class="nav-link text-black" href="#map">Map</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-black" href="#search">Search</a>
@@ -53,7 +56,7 @@
               <li class="nav-item">
                 <a class="nav-link text-black" href="#auth?state=login">Login</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link text-black" href="#auth?state=register">Register</a>
               </li>
               <li class="nav-item d-none">
@@ -61,16 +64,26 @@
               </li>
               <li class="nav-item d-none">
                 <a class="nav-link text-black" href="#logout">Logout</a>
+              </li> -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                <ul class="dropdown-menu bg-teal border-2 shadow">
+                  <li><a class="dropdown-item" href="#profile">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Login</a></li>
+                  <li><a class="dropdown-item" href="#">Login</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
               </li>
             </ul>
-            <button class="btn p-2 px-3 ms-2" id="search">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-search" viewBox="0 0 16 16">
+            <button class="btn p-2 px-3 ms-2" id="search" data-bs-toggle="modal" data-bs-target="#searchModal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
               </svg>
               <span class="visually-hidden">search</span>
             </button>
             <button class="btn p-2 px-3 ms-2" id="theme">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
                 <path
                   d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"
                 />
@@ -84,8 +97,72 @@
         </div>
       </nav>
     </header>
-    <main id="root-main"></main>
-    <div id="mapid" style="height: 100vh"></div>
-    <footer></footer>
+    <main class="flex-grow-1" id="root-main"></main>
+    <!-- Modals -->
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-teal position-relative">
+            <h1 class="modal-title fs-5 text-black mx-auto" id="exampleModalLabel">Search Venues</h1>
+            <button type="button" class="me-3 position-absolute top-50 end-0 translate-middle-y p-2 border-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+              </svg>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="searchModalForm" novalidate>
+              <div class="col-12">
+                <label for="modalSearchQuery" class="form-label visually-hidden">Search</label>
+                <input type="text" class="form-control" id="modalSearchQuery" placeholder="Search Venues.." required />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-md-4">
+                <label for="modalSearchSort" class="form-label">Sort By</label>
+                <select class="form-select" id="modalSearchSort">
+                  <option selected disabled value="">Sort:</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="modalSearchOrder" class="form-label">Order</label>
+                <select class="form-select" id="modalSearchOrder">
+                  <option selected disabled value="">Order:</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit">Submit form</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer bg-teal">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Login Modal -->
+
+    <!-- Register Modal -->
+
+    <!-- Profile Modal -->
+
+    <!-- Logout Modal -->
+
+    <!-- Create Modal -->
+
+    <!-- Update Modal -->
+
+    <!-- Delete Modal -->
+
+    <!-- Booking -->
+
+    <!-- Booking Update -->
+
+    <!-- Booking Delete -->
+
+    <footer class="bg-teal p-5"><p class="text-center text-black">Copyright 2024 Holidaze</p></footer>
   </body>
 </html>
