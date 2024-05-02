@@ -1,5 +1,5 @@
 import { loadMap } from "../../components/map/venueMap.js";
-import { apiBaseUrl } from "../../components/constants.js";
+import { apiBaseUrl } from "../../data/constants.js";
 
 export function Map() {
   const root = $("#root-main");

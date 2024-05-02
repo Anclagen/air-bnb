@@ -74,6 +74,7 @@ body[data-bs-theme="light"] #search:hover {
   text-align: center;
 }
 
+.card-title,
 .card-text {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -81,8 +82,12 @@ body[data-bs-theme="light"] #search:hover {
   overflow: hidden;
 }
 
+.card-title {
+  -webkit-line-clamp: 2;
+}
+
 .card-img-top {
-  height: 170px;
+  height: 300px;
   object-fit: cover;
   max-height: 100%;
 }
