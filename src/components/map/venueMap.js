@@ -23,11 +23,15 @@ export async function loadMap(data = []) {
     }
 
     if (lat || lng) {
-      var popupContent = `<b>${venue.name}</b><br />${venue.description}`;
+      var popupContent = `<div class="card w-100">
+      ${venue.media[0] ? `<img src="${venue.media[0].url}" class="card-img-top" alt="${venue.name}" />` : ""}
+      <div class="card-body">
+        <h5 class="card-title">${venue.name}</h5>
+        <p class="card-text">${venue.description}</p>
+        <button class="btn btn-primary p-2 px-3 ms-2" id="${venue.id}" data-bs-toggle="modal" data-bs-target="#venueModal">view</button>
+      </div>
+    </div>`;
 
-      if (venue.media && venue.media.length > 0) {
-        popupContent += `<br /><img src="${venue.media[0].url}" alt="${venue.media[0].alt}" style="width: 100px;">`;
-      }
       L.marker([lat, lng]).addTo(mymap).bindPopup(popupContent).openPopup();
     } else {
       console.log("No coordinates for venue", venue.name, i);
