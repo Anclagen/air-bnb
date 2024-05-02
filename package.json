@@ -1,0 +1,22 @@
+{
+  "name": "air-bnb",
+  "version": "0.0.1",
+  "description": "Messing around with Jquery, Bootstrap and Maps",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anclagen/air-bnb.git"
+  },
+  "author": "Alexander",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Anclagen/air-bnb/issues"
+  },
+  "homepage": "https://github.com/Anclagen/air-bnb#readme",
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
