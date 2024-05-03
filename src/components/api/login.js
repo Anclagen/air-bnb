@@ -1,4 +1,4 @@
-import { apiBaseUrl } from "../../data/constants";
+import { apiBaseUrl } from "../../data/constants.js";
 
 export async function login(email, password) {
   try {
@@ -22,7 +22,6 @@ export async function login(email, password) {
     });
 
     response.data.apiKey = apiKey.data.key;
-
     return response;
   } catch (error) {
     console.log("status:" + error.status, "message:" + error.responseJSON.message);

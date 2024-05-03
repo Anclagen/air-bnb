@@ -54,15 +54,20 @@
                 <a class="nav-link text-black" href="#search">Search</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-in-session="false">Account</a>
+                <ul class="dropdown-menu bg-teal border-2 shadow">
+                  <li><button class="dropdown-item" data-in-session="false" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button></li>
+                  <li><button class="dropdown-item" data-in-session="false" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-in-session="true">Profile</a>
                 <ul class="dropdown-menu bg-teal border-2 shadow">
                   <li><a class="dropdown-item" data-in-session="true" href="#profile">Profile</a></li>
                   <li><a class="dropdown-item" data-in-session="true" href="#bookings">Bookings</a></li>
                   <li><button class="dropdown-item" data-in-session="true" data-bs-toggle="modal" data-bs-target="#createVenueModal">Create Venue</button></li>
-                  <li><button class="dropdown-item" data-in-session="false" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button></li>
-                  <li><button class="dropdown-item" data-in-session="false" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button></li>
                   <li><hr class="dropdown-divider" data-in-session="true" /></li>
-                  <li><button class="dropdown-item" data-in-session="true" id="logout-btn">Logout</button></li>
+                  <li><button class="dropdown-item" data-in-session="true" id="logoutBtn">Logout</button></li>
                 </ul>
               </li>
             </ul>
