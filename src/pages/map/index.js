@@ -5,7 +5,7 @@ export function Map() {
   const root = $("#root-main");
   let content = `<section>
       <h1>Map</h1>
-      <div id="venueMap" style="height: 100vh;"></div>
+      <div class="z-2" id="venueMap" style="height: 100vh;"></div>
     </section>`;
   root.html(content);
   // fetch data
