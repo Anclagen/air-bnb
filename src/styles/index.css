@@ -61,6 +61,15 @@ body[data-bs-theme="light"] #theme:hover,
 body[data-bs-theme="light"] #search:hover {
   color: #eeeeee;
 }
+body[data-session="false"] [data-in-session="false"],
+body[data-session="true"] [data-in-session="true"] {
+  display: block;
+}
+
+body[data-session="false"] [data-in-session="true"],
+body[data-session="true"] [data-in-session="false"] {
+  display: none;
+}
 
 .banner {
   background-image: url("/src/assets/images/AI-sunset-beach-properties.jpg");

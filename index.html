@@ -19,7 +19,7 @@
     <script src="src/app.js" type="module" defer></script>
     <link rel="stylesheet" href="src/styles/index.css" />
   </head>
-  <body data-bs-theme="dark">
+  <body data-bs-theme="dark" data-session="false">
     <header>
       <nav class="navbar navbar-expand-md fixed-top z-3 shadow-sm fs-4" data-bs-theme="light">
         <div class="container-fluid">
@@ -53,26 +53,16 @@
               <li class="nav-item">
                 <a class="nav-link text-black" href="#search">Search</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link text-black" href="#auth?state=login">Login</a>
-              </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link text-black" href="#auth?state=register">Register</a>
-              </li>
-              <li class="nav-item d-none">
-                <a class="nav-link text-black" href="#profile">Profile</a>
-              </li>
-              <li class="nav-item d-none">
-                <a class="nav-link text-black" href="#logout">Logout</a>
-              </li> -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
                 <ul class="dropdown-menu bg-teal border-2 shadow">
-                  <li><a class="dropdown-item" href="#profile">Profile</a></li>
-                  <li><a class="dropdown-item" href="#">Login</a></li>
-                  <li><a class="dropdown-item" href="#">Login</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                  <li><a class="dropdown-item" data-in-session="true" href="#profile">Profile</a></li>
+                  <li><a class="dropdown-item" data-in-session="true" href="#bookings">Bookings</a></li>
+                  <li><button class="dropdown-item" data-in-session="true" data-bs-toggle="modal" data-bs-target="#createVenueModal">Create Venue</button></li>
+                  <li><button class="dropdown-item" data-in-session="false" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button></li>
+                  <li><button class="dropdown-item" data-in-session="false" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button></li>
+                  <li><hr class="dropdown-divider" data-in-session="true" /></li>
+                  <li><button class="dropdown-item" data-in-session="true" id="logout-btn">Logout</button></li>
                 </ul>
               </li>
             </ul>
@@ -144,24 +134,186 @@
       </div>
     </div>
     <!-- Login Modal -->
-
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-teal position-relative">
+            <h1 class="modal-title fs-5 text-black mx-auto">Login</h1>
+            <button type="button" class="me-3 position-absolute top-50 end-0 translate-middle-y p-2 border-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+              </svg>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="loginForm" novalidate>
+              <div class="col-12">
+                <label for="loginEmail" class="form-label visually-hidden">Email</label>
+                <input type="email" class="form-control" id="loginEmail" placeholder="Email" required />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12">
+                <label for="loginPassword" class="form-label visually-hidden">Password</label>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password" required />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit">Login</button>
+              </div>
+            </form>
+            <p class="text-center mt-3">
+              Don't have an account?<button type="button" class="btn btn-link ms-2" data-bs-dismiss="modal" data-bs-target="#registerModal" data-bs-toggle="modal">Register</button>
+            </p>
+          </div>
+          <div class="modal-footer bg-teal">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Register Modal -->
-
-    <!-- Profile Modal -->
-
-    <!-- Logout Modal -->
-
-    <!-- Create Modal -->
-
-    <!-- Update Modal -->
-
-    <!-- Delete Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-teal position-relative">
+            <h1 class="modal-title fs-5 text-black mx-auto">Register</h1>
+            <button type="button" class="me-3 position-absolute top-50 end-0 translate-middle-y p-2 border-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+              </svg>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="registerForm" novalidate>
+              <div class="col-12">
+                <label for="registerName" class="form-label visually-hidden">Name</label>
+                <input type="text" class="form-control" id="registerName" placeholder="Name" required />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12">
+                <label for="registerEmail" class="form-label visually-hidden">Email</label>
+                <input type="email" class="form-control" id="registerEmail" placeholder="Email" required />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12">
+                <label for="registerPassword" class="form-label visually-hidden">Password</label>
+                <input type="password" class="form-control" id="registerPassword" placeholder="Password" required />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12">
+                <label for="registerConfirmPassword" class="form-label visually-hidden">Confirm Password</label>
+                <input type="password" class="form-control" id="registerConfirmPassword" placeholder="Confirm Password" required />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-primary" type="submit">Register</button>
+              </div>
+            </form>
+            <p class="text-center mt-3">
+              Already have an account?<button type="button" class="btn btn-link ms-2" data-bs-dismiss="modal" data-bs-target="#loginModal" data-bs-toggle="modal">Login</button>
+            </p>
+          </div>
+          <div class="modal-footer bg-teal">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Update Profile Modal -->
+    <!-- {
+      "name": "my_username", // Required
+      "email": "first.last@stud.noroff.no", // Required
+      "password": "UzI1NiIsInR5cCI", // Required
+      "bio": "This is my profile bio", // Optional
+      "avatar": {
+        "url": "https://img.service.com/avatar.jpg", // Optional
+        "alt": "My avatar alt text" // Optional
+      },
+      "banner": {
+        "url": "https://img.service.com/banner.jpg", // Optional
+        "alt": "My banner alt text" // Optional
+      },
+      "venueManager": true // Optional
+    } -->
+    <div class="modal fade" id="profileUpdateModal" tabindex="-1" aria-labelledby="profileUpdateModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-teal position-relative">
+            <h1 class="modal-title fs-5 text-black mx-auto">Update Profile</h1>
+            <button type="button" class="me-3 position-absolute top-50 end-0 translate-middle-y p-2 border-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+              </svg>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="profileUpdateForm" novalidate>
+              <div class="col-12">
+                <label for="profileUpdateBio" class="form-label visually-hidden">Bio</label>
+                <textarea class="form-control" id="profileUpdateBio" placeholder="Bio"></textarea>
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12">
+                <label for="profileUpdateAvatarUrl" class="form-label visually-hidden">Avatar URL</label>
+                <input type="url" class="form-control" id="profileUpdateAvatarUrl" placeholder="Avatar URL" />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12">
+                <label for="profileUpdateAvatarAlt" class="form-label visually-hidden">Avatar Alt</label>
+                <input type="text" class="form-control" id="profileUpdateAvatarAlt" placeholder="Avatar Alt" />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12">
+                <label for="profileUpdateBannerUrl" class="form-label visually-hidden">Banner URL</label>
+                <input type="url" class="form-control" id="profileUpdateBannerUrl" placeholder="Banner URL" />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12">
+                <label for="profileUpdateBannerAlt" class="form-label visually-hidden">Banner Alt</label>
+                <input type="text" class="form-control" id="profileUpdateBannerAlt" placeholder="Banner Alt" />
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-primary" type="submit">Update Profile</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer bg-teal">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Booking -->
-
+    <!-- {
+      "data": {
+        "id": "string",
+        "dateFrom": "string",
+        "dateTo": "string",
+        "guests": 0,
+        "created": "string",
+        "updated": "string",
+        "venue": {
+          "id": "string",
+          "name": "string",
+          "description": "string",
+          "media": [
+            {
+              "url": "https://url.com/image.jpg",
+              "alt": "string"
+            }
+          ],
+          "price": 0, -->
     <!-- Booking Update -->
 
     <!-- Booking Delete -->
+
+    <!-- Create Venue Modal -->
+
+    <!-- Update Venue Modal -->
+
+    <!-- Delete Venue Modal -->
 
     <!-- Venue Modal -->
     <div class="modal fade" id="venueModal" tabindex="-1" aria-labelledby="venueModal" aria-hidden="true">
