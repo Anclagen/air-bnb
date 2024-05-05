@@ -45,7 +45,6 @@ export function getSession() {
 export function setSession(session) {
   localStorage.setItem("session", JSON.stringify(session));
   window.dispatchEvent(new Event("session"));
-  console.log("session set");
 }
 
 // remove the session from local storage
