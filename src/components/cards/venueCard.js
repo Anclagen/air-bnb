@@ -1,3 +1,5 @@
+import { updateVenueModal } from "../templates/modals/venueModal.js";
+
 export function venueCard(venue) {
   const $venueCard = $(`
   <div class="col-sm-6 col-md-4 col-xl-3 d-flex align-items-stretch">
@@ -20,30 +22,6 @@ export function venueCard(venue) {
   });
 
   return $venueCard;
-}
-
-export function updateVenueModal(venue) {
-  const $modal = $("#venueModal");
-  $modal.find(".modal-title").text(venue.name);
-  $modal.find(".modal-body").html(`
-  ${venue.media[0] ? `<img src="${venue.media[0].url}" class="card-img-top" alt="${venue.name}" />` : ""}
-  <p>${venue.rating}</p>
-  <p>${venue.description}</p>
-  <p>${venue.location.address}</p>
-  <p>${venue.location.city}</p>
-  <p>${venue.location.zip}</p>
-  <p>${venue.location.country}</p>
-  <p>${venue.location.continent}</p>
-  <p>Price: ${venue.price} NOK</p>
-  <p>Max guests: ${venue.maxGuests}</p>
-  <p>Wifi: ${venue.meta.wifi ? "Yes" : "No"}</p>
-  <p>Parking: ${venue.meta.parking ? "Yes" : "No"}</p>
-  <p>Breakfast: ${venue.meta.breakfast ? "Yes" : "No"}</p>
-  <p>Pets: ${venue.meta.pets ? "Yes" : "No"}</p>
-  <p>Owner: ${venue.owner.name}</p>
-  <p>Email: ${venue.owner.email}</p>
-  <p>Bio: ${venue.owner.bio}
-  `);
 }
 
 const wifi = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wifi" viewBox="0 0 16 16">
