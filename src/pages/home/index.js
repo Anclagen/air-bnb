@@ -1,6 +1,6 @@
-import { apiBaseUrl } from "../../data/constants.js";
 import { venueCard } from "../../components/cards/venueCard.js";
 import { getVenues } from "../../components/api/getVenues.js";
+import { venueLoadingCard } from "../../components/cards/venueLoadingCard.js";
 
 export async function Home() {
   try {
@@ -20,7 +20,9 @@ export async function Home() {
   </section>
   <section class="container-lg p-3 mt-2">
     <h2 class="text-center">Venues</h2>
-   <div class="row d-flex align-items-stretch" id="newest"></div>
+   <div class="row d-flex align-items-stretch" id="newest">
+   ${Array(20).fill(venueLoadingCard().prop("outerHTML")).join("")}
+   </div>
   </section>
   `;
     root.html(content);
@@ -30,6 +32,9 @@ export async function Home() {
       newest.html(`<div class="alert alert-danger" role="alert">Status ${meta.error.status}: ${meta.error.message} </div>`); //error message
       return;
     }
+
+    newest.html(""); //clear loading cards
+
     data.forEach((venue) => {
       newest.append(venueCard(venue));
     });
