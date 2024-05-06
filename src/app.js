@@ -21,6 +21,7 @@ try {
     Theme();
     // Modal handlers
     loginFormHandler();
+    registerFormHandler();
     logout();
     SearchModal();
   });
