@@ -24,7 +24,7 @@ export async function login(email, password) {
     response.data.apiKey = apiKey.data.key;
     return response;
   } catch (error) {
-    console.log("status:" + error.status, "message:" + error.responseJSON.message);
-    return { error: { status: error.status, message: error.responseJSON.message } };
+    console.log(error);
+    return { error: error.responseJSON.errors, code: error.responseJSON.statusCode, message: error.responseJSON.status };
   }
 }

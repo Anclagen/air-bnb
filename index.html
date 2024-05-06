@@ -155,13 +155,14 @@
               <div class="col-12">
                 <label for="loginEmail" class="form-label visually-hidden">Email</label>
                 <input type="email" class="form-control" id="loginEmail" placeholder="Email" required />
-                <div class="valid-feedback">Looks good!</div>
+                <div id="loginEmailFeedback"></div>
               </div>
               <div class="col-12">
                 <label for="loginPassword" class="form-label visually-hidden">Password</label>
                 <input type="password" class="form-control" id="loginPassword" placeholder="Password" required />
-                <div class="valid-feedback">Looks good!</div>
+                <div id="loginPasswordFeedback"></div>
               </div>
+              <div class="col-12 error" id="loginFormError"></div>
               <div class="col-12">
                 <button class="btn btn-primary" type="submit">Login</button>
               </div>
@@ -193,23 +194,24 @@
               <div class="col-12">
                 <label for="registerName" class="form-label visually-hidden">Name</label>
                 <input type="text" class="form-control" id="registerName" placeholder="Name" required />
-                <div class="valid-feedback">Looks good!</div>
+                <div id="registerNameFeedback"></div>
               </div>
               <div class="col-12">
                 <label for="registerEmail" class="form-label visually-hidden">Email</label>
                 <input type="email" class="form-control" id="registerEmail" placeholder="Email" required />
-                <div class="valid-feedback">Looks good!</div>
+                <div id="registerEmailFeedback"></div>
               </div>
               <div class="col-12">
                 <label for="registerPassword" class="form-label visually-hidden">Password</label>
                 <input type="password" class="form-control" id="registerPassword" placeholder="Password" required />
-                <div class="valid-feedback">Looks good!</div>
+                <div id="registerPasswordFeedback"></div>
               </div>
               <div class="col-12">
                 <label for="registerConfirmPassword" class="form-label visually-hidden">Confirm Password</label>
                 <input type="password" class="form-control" id="registerConfirmPassword" placeholder="Confirm Password" required />
-                <div class="valid-feedback">Looks good!</div>
+                <div id="registerConfirmPasswordFeedback"></div>
               </div>
+              <div class="col-12 error" id="registerFormError"></div>
               <div class="col-12 text-center">
                 <button class="btn btn-primary" type="submit">Register</button>
               </div>
@@ -224,22 +226,8 @@
         </div>
       </div>
     </div>
+
     <!-- Update Profile Modal -->
-    <!-- {
-      "name": "my_username", // Required
-      "email": "first.last@stud.noroff.no", // Required
-      "password": "UzI1NiIsInR5cCI", // Required
-      "bio": "This is my profile bio", // Optional
-      "avatar": {
-        "url": "https://img.service.com/avatar.jpg", // Optional
-        "alt": "My avatar alt text" // Optional
-      },
-      "banner": {
-        "url": "https://img.service.com/banner.jpg", // Optional
-        "alt": "My banner alt text" // Optional
-      },
-      "venueManager": true // Optional
-    } -->
     <div class="modal fade" id="profileUpdateModal" tabindex="-1" aria-labelledby="profileUpdateModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
