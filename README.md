@@ -9,29 +9,39 @@ TODO:
 - [x] Add a navbar.
 - [x] Add a footer.
 - [x] Basic Home page.
-      **Login and Registration**
+
+**Login and Registration**
+
 - [x] Add a user login modal.
 - [x] Login handler.
 - [ ] Validate user login.
 - [x] Add a user registration modal.
 - [ ] Registration handler.
 - [ ] Validate user registration.
-      **Search**
+
+**Search**
+
 - [x] Add a search bar.
 - [x] Add search modal.
 - [ ] Search handlers.
 - [ ] Add a search results filter.
 - [ ] Search results page.
 - [ ] Search results handler.
-      **Map**
+
+**Map**
+
 - [x] Add a map.
 - [x] Add a map marker card.
-      **Profile**
+
+**Profile**
+
 - [x] Profile page.
 - [ ] Add a user profile modal.
 - [ ] Add a update user profile modal.
 - [ ] Profile update handler.
-      **Venue**
+
+**Venue**
+
 - [x] Add a venue card.
 - [x] Add a venue modal.
 - [ ] Venue modal handler.
@@ -44,7 +54,9 @@ TODO:
 - [ ] Validate venue update.
 - [ ] Add a venue delete modal.
 - [ ] Delete venue handler.
-      **Booking**
+
+**Booking**
+
 - [ ] Add a booking modal.
 - [ ] Add a booking confirmation modal.
 - [ ] Add a booking history modal.
