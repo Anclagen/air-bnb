@@ -28,4 +28,14 @@ export function updateVenueModal(venue) {
   <p>Pets: ${venue.meta.pets ? "Yes" : "No"}</p>
   ${venue.owner ? owner(venue) : ""}
   `);
+
+  $("#bookBtn").on("click", () => {
+    $("#booking").text(`Book ${venue.name}`);
+    for (let i = 1; i <= venue.maxGuests; i++) {
+      $("#bookingGuests").append(`<option value="${i}">${i}</option>`);
+    }
+    $("#bookingPrice").text(`${venue.price} NOK`);
+    $("#createBookingBtn").attr("data-venue-id", venue.id);
+    //TODO date picker setup
+  });
 }

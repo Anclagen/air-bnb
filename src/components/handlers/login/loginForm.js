@@ -4,7 +4,7 @@ import { validateForm } from "../../form/validation/validateForm.js";
 import { validateNoroffEmail } from "../../form/validation/validateNoroffEmail.js";
 import { errorFeedback } from "../../form/feedback/errorFeedback.js";
 
-export function loginFormHandler() {
+export async function loginFormHandler() {
   try {
     const loginForm = $("#loginForm");
 

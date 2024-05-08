@@ -226,7 +226,6 @@
         </div>
       </div>
     </div>
-
     <!-- Update Profile Modal -->
     <div class="modal fade" id="profileUpdateModal" tabindex="-1" aria-labelledby="profileUpdateModal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
@@ -244,28 +243,29 @@
               <div class="col-12">
                 <label for="profileUpdateBio" class="form-label visually-hidden">Bio</label>
                 <textarea class="form-control" id="profileUpdateBio" placeholder="Bio"></textarea>
-                <div class="valid-feedback">Looks good!</div>
+                <div id="profileUpdateBioFeedback"></div>
               </div>
               <div class="col-12">
                 <label for="profileUpdateAvatarUrl" class="form-label visually-hidden">Avatar URL</label>
                 <input type="url" class="form-control" id="profileUpdateAvatarUrl" placeholder="Avatar URL" />
-                <div class="valid-feedback">Looks good!</div>
+                <div id="profileUpdateAvatarUrlFeedback"></div>
               </div>
               <div class="col-12">
                 <label for="profileUpdateAvatarAlt" class="form-label visually-hidden">Avatar Alt</label>
                 <input type="text" class="form-control" id="profileUpdateAvatarAlt" placeholder="Avatar Alt" />
-                <div class="valid-feedback">Looks good!</div>
+                <div id="profileUpdateAvatarAltFeedback"></div>
               </div>
               <div class="col-12">
                 <label for="profileUpdateBannerUrl" class="form-label visually-hidden">Banner URL</label>
                 <input type="url" class="form-control" id="profileUpdateBannerUrl" placeholder="Banner URL" />
-                <div class="valid-feedback">Looks good!</div>
+                <div id="profileUpdateBannerUrlFeedback"></div>
               </div>
               <div class="col-12">
                 <label for="profileUpdateBannerAlt" class="form-label visually-hidden">Banner Alt</label>
                 <input type="text" class="form-control" id="profileUpdateBannerAlt" placeholder="Banner Alt" />
-                <div class="valid-feedback">Looks good!</div>
+                <div id="profileUpdateBannerAltFeedback"></div>
               </div>
+              <div class="col-12 error" id="profileUpdateFormError"></div>
               <div class="col-12 text-center">
                 <button class="btn btn-primary" type="submit">Update Profile</button>
               </div>
@@ -298,6 +298,57 @@
             }
           ],
           "price": 0, -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-teal position-relative">
+            <h1 class="modal-title fs-5 text-black mx-auto" id="booking"></h1>
+            <button
+              type="button"
+              class="me-3 position-absolute top-50 end-0 translate-middle-y p-2 border-0 bg-transparent"
+              data-bs-dismiss="modal"
+              data-bs-target="#venueModal"
+              data-bs-toggle="modal"
+              aria-label="Close"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+              </svg>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="bookingForm" novalidate>
+              <div class="col-12">
+                <label for="bookingDateFrom" class="form-label visually-hidden">Date From</label>
+                <input type="date" class="form-control" id="bookingDateFrom" required />
+                <div id="bookingDateFromFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="bookingDateTo" class="form-label visually-hidden">Date To</label>
+                <input type="date" class="form-control" id="bookingDateTo" required />
+                <div id="bookingDateToFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="bookingGuests" class="form-label visually-hidden">Guests</label>
+                <select class="form-select" id="bookingGuests" required>
+                  <option selected disabled value="">Guests:</option>
+                </select>
+                <div id="bookingGuestsFeedback"></div>
+              </div>
+              <div class="col-12">
+                <p><b>Price Per Night:</b> <span id="bookingPrice"></span></p>
+                <p><b>Total Price:</b> <span id="bookingTotalPrice">0 Nok</span></p>
+              </div>
+              <div class="col-12 error" id="bookingFormError"></div>
+              <button type="submit" id="createBookingBtn" class="btn btn-primary">Book</button>
+            </form>
+          </div>
+          <div class="modal-footer bg-teal">
+            <button type="button" class="btn btn-secondary" data-bs-target="#venueModal" data-bs-toggle="modal" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Booking Update -->
 
     <!-- Booking Delete -->
@@ -322,7 +373,7 @@
           </div>
           <div class="modal-body"></div>
           <div class="modal-footer bg-teal">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Book</button>
+            <button type="button" id="bookBtn" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#bookingModal" data-bs-toggle="modal">book</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
