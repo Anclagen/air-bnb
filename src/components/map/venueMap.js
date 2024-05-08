@@ -1,8 +1,12 @@
+import { updateVenueModal } from "../templates/modals/venueModal";
+
 export async function loadMap(data = []) {
-  var mymap = L.map("venueMap").setView([10, 10], 10);
+  //set zoom on europe
+  var mymap = L.map("venueMap").setView([51.505, -0.09], 3);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
+    minZoom: 2, // Minimum zoom level
+    maxZoom: 19, // Maximum zoom level
   }).addTo(mymap);
 
   data.forEach((venue, i) => {
@@ -21,20 +25,35 @@ export async function loadMap(data = []) {
         lng = Math.random() * (-66 - -125) - 125; // Longitude between -125 and -66
       }
     }
-
+    //   <div class="card m-2 w-100">
+    //   ${venue.media[0] ? `<img src="${venue.media[0].url}" class="card-img-top" alt="${venue.name}" />` : ""}
+    //   <div class="card-body">
+    //     <h5 class="card-title">${venue.name}</h5>
+    //     <p class="card-text">${venue.description}</p>
+    //     <p class="card-text">Max Guests: ${venue.maxGuests}</p>
+    //     <p class="card-text">Location: ${venue.location.city}, ${venue.location.country}</p>
+    //     <p> ${venue.meta.wifi ? wifi : noWifi} ${venue.meta.parking ? parking : noParking} ${venue.meta.breakfast ? food : noFood} ${venue.meta.pets ? pet : noPet}</p>
+    //     <button class="btn btn-primary p-2 px-3 ms-2" id="${venue.id}" data-bs-toggle="modal" data-bs-target="#venueModal">view</button>
+    //   </div>
+    // </div>
     if (lat || lng) {
-      var popupContent = `<div class="card w-100">
-      ${venue.media[0] ? `<img src="${venue.media[0].url}" class="card-img-top" alt="${venue.name}" />` : ""}
+      var popupContent = `<div class="card w-100 marker-card">
+      ${venue.media[0] ? `<img src="${venue.media[0].url}" class="card-img-top-marker" alt="${venue.name}" />` : ""}
       <div class="card-body">
         <h5 class="card-title">${venue.name}</h5>
         <p class="card-text">${venue.description}</p>
+        <p class="card-text">Max Guests: ${venue.maxGuests}</p>
         <button class="btn btn-primary p-2 px-3 ms-2" id="${venue.id}" data-bs-toggle="modal" data-bs-target="#venueModal">view</button>
       </div>
     </div>`;
 
-      L.marker([lat, lng]).addTo(mymap).bindPopup(popupContent).openPopup();
-    } else {
-      console.log("No coordinates for venue", venue.name, i);
+      const marker = L.marker([lat, lng]).addTo(mymap).bindPopup(popupContent);
+
+      marker.on("popupopen", function () {
+        $(`#${venue.id}`).on("click", () => {
+          updateVenueModal(venue);
+        });
+      });
     }
   });
 }

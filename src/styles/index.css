@@ -95,8 +95,39 @@ body[data-session="true"] [data-in-session="false"] {
   -webkit-line-clamp: 2;
 }
 
+.card-img-top-marker,
 .card-img-top {
   height: 300px;
   object-fit: cover;
   max-height: 100%;
+}
+
+.card-img-top-marker {
+  height: 200px;
+  width: 100%;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  line-height: 1;
+  font-size: 14px;
+  font-size: 1.08333em;
+  min-height: 1px;
+}
+
+.leaflet-popup-content-wrapper {
+  padding: 0;
+  overflow: hidden;
+}
+
+.leaflet-popup-content-wrapper .card-body {
+  width: 260px;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: white;
+  background-color: rgb(34, 61, 67, 0.5);
+  border: white solid 1px;
+  border-radius: 50%;
+  margin: 5px;
 }
