@@ -3,30 +3,14 @@ import { validateForm } from "../../form/validation/validateForm.js";
 import { errorFeedback } from "../../form/feedback/errorFeedback.js";
 import { updateProfile } from "../../api/profile/update.js";
 import { validateUrl } from "../../form/validation/validateUrl.js";
-
-function updateProfileModal(user) {
-  const bio = $("#profileUpdateBio");
-  bio.val(user.bio);
-  const avatarUrl = $("#profileUpdateAvatarUrl");
-  avatarUrl.val(user.avatar.url);
-  const avatarAlt = $("#profileUpdateAvatarAlt");
-  avatarAlt.val(user.avatar.alt);
-  const bannerUrl = $("#profileUpdateBannerUrl");
-  bannerUrl.val(user.banner.url);
-  const bannerAlt = $("#profileUpdateBannerAlt");
-  bannerAlt.val(user.banner.alt);
-}
+import { updateProfileModal } from "../../templates/modals/updateProfileModal.js";
 
 export async function updateProfileFormHandler() {
   try {
     const form = $("#profileUpdateForm");
-
-    const user = getSession();
-    console.log(user);
-    updateProfileModal(user);
     form.on("submit", async (event) => {
       event.preventDefault();
-
+      const user = getSession();
       const bio = $("#profileUpdateBio");
       const avatarUrl = $("#profileUpdateAvatarUrl");
       const avatarAlt = $("#profileUpdateAvatarAlt");

@@ -8,7 +8,6 @@ import { apiBaseUrl } from "../../data/constants.js";
  */
 export async function getVenues(options = { sort: "created", order: "desc", bookings: true, owner: true, limit: 100, offset: 0 }, id = null) {
   try {
-    console.log(options);
     const response = await $.ajax({
       url:
         apiBaseUrl +
@@ -21,7 +20,6 @@ export async function getVenues(options = { sort: "created", order: "desc", book
         (options.bookings ? `&_bookings=${options.bookings}` : "") +
         (options.owner ? `&_owner=${options.owner}` : ""),
     });
-    console.log(response);
     //filter out if "string" or "test" is in either the venue name and description
     const data = response.data.filter((venue) => {
       return !venue.name.toLowerCase().includes("string") && !venue.name.toLowerCase().includes("test") && !venue.description.toLowerCase().includes("test");

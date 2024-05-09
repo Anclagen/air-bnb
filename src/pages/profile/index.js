@@ -2,6 +2,7 @@ import { getProfile } from "../../components/api/profile/get.js";
 import { getSession } from "../../components/handlers/session/session.js";
 import { venueCard } from "../../components/cards/venueCard.js";
 import { venueLoadingCard } from "../../components/cards/venueLoadingCard.js";
+import { updateProfileModal } from "../../components/templates/modals/updateProfileModal.js";
 
 export async function Profile() {
   if ($("body[data-session=false]").length > 0) {
@@ -15,6 +16,7 @@ export async function Profile() {
   //TODO add an id check later to get other users profile
   const { data, meta } = await getProfile(session.name);
   const user = data;
+  updateProfileModal(user);
   const root = $("#root-main");
   const content = `
     <div class="">
