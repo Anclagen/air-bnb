@@ -17,21 +17,20 @@ export async function Profile() {
   const root = $("#root-main");
   const content = `
     <div class="">
-      <img class="object-fit-cover w-100" style="height: 200px;" src="${user.banner.url}" alt="${user.banner.alt}" />
+      <img class="object-fit-cover w-100" style="height: 200px;" id="userBanner" src="${user.banner.url}" alt="${user.banner.alt}" />
     </div>
     <section class="container-lg">
       <h1 class="text-center">${user.name}'s Profile</h1>
       <div class="container">
         <div class="row">
           <div class="col-4 text-center">
-            <img class="object-fit-contain w-100" src="${user.avatar.url}" alt="${user.avatar.alt}" />
+            <img class="object-fit-contain w-100" id="userAvatar" src="${user.avatar.url}" alt="${user.avatar.alt}" />
             <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#profileUpdateModal">Update Profile</button>
           </div>
-
           <div class="col-8">
             <h2>${user.name}</h2>
             <p>${user.email}</p>
-            <p>${user.bio}</p>
+            <p id="userBio">${user.bio}</p>
           </div>
         </div>
       </div>

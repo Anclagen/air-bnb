@@ -28,10 +28,11 @@ export function sessionHandler() {
 
   //jquery event listener for session change in current window
   $(window).on("session", function (e) {
-    if (body.attr("data-session") === "true") {
-      body.attr("data-session", false);
-    } else {
+    const user = getSession();
+    if (user?.accessToken && user?.apiKey) {
       body.attr("data-session", true);
+    } else {
+      body.attr("data-session", false);
     }
   });
 }

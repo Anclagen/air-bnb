@@ -6,6 +6,7 @@ import { loginFormHandler } from "./components/handlers/login/loginForm.js";
 import { registerFormHandler } from "./components/handlers/register/registerForm.js";
 import { sessionHandler } from "./components/handlers/session/session.js";
 import { logout } from "./components/handlers/logout/logout.js";
+import { updateProfileFormHandler } from "./components/handlers/profile/updateProfile.js";
 
 try {
   $("document").ready(function () {
@@ -23,6 +24,7 @@ try {
     loginFormHandler();
     registerFormHandler();
     logout();
+    updateProfileFormHandler();
     SearchModal();
   });
 } catch (error) {
