@@ -17,7 +17,7 @@ export function venueCard(venue) {
       <p> ${venue.meta.wifi ? wifi : noWifi} ${venue.meta.parking ? parking : noParking} ${venue.meta.breakfast ? food : noFood} ${venue.meta.pets ? pet : noPet}</p>
       <button class="btn btn-primary p-2 px-3 m-2" id="view-${venue.id}" data-bs-toggle="modal" data-bs-target="#venueModal">view</button>
 			${
-        user.name === venue.owner.name
+        user && user.name === venue.owner.name
           ? `<button class="btn btn-info p-2 px-3 m-2" id="update-${venue.id}" data-bs-toggle="modal" data-bs-target="#updateVenueModal">update</button><button class="btn btn-danger p-2 px-3 m-2" id="delete-${venue.id}">delete</button>`
           : ""
       }
