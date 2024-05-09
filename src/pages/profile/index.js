@@ -13,7 +13,8 @@ export async function Profile() {
   }
   const session = getSession();
   //TODO add an id check later to get other users profile
-  const user = session;
+  const { data, meta } = await getProfile(session.name);
+  const user = data;
   const root = $("#root-main");
   const content = `
     <div class="">
@@ -23,14 +24,20 @@ export async function Profile() {
       <h1 class="text-center">${user.name}'s Profile</h1>
       <div class="container">
         <div class="row">
-          <div class="col-4 text-center">
-            <img class="object-fit-contain w-100" id="userAvatar" src="${user.avatar.url}" alt="${user.avatar.alt}" />
-            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#profileUpdateModal">Update Profile</button>
+          <div class="col-md-4 text-center">
+            <img class="object-fit-contain w-100 rounded shadow" id="userAvatar" src="${user.avatar.url}" alt="${user.avatar.alt}" />
+            <button class="btn btn-primary me-3 my-3" data-bs-toggle="modal" data-bs-target="#profileUpdateModal">Update Profile</button>
+            <button class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#profileDeleteModal1">Delete Profile</button>
           </div>
-          <div class="col-8">
+          <div class="col-md-8 px-4">
             <h2>${user.name}</h2>
-            <p>${user.email}</p>
+            <p>Contact Details: <a href="mailto:${user.email}">${user.email}</a></p>
+            <h3>A Little About Me!</h3>
             <p id="userBio">${user.bio}</p>
+            <h3>Stats</h3>
+            <p>Bookings: ${user.bookings.length}</p>
+            <p>Venues: ${user.venues.length}</p>
+
           </div>
         </div>
       </div>
@@ -50,7 +57,7 @@ export async function Profile() {
     </section>`;
 
   root.html(content);
-  const { data, meta } = await getProfile(user.name);
+
   if (meta.error) {
     console.log(meta.error);
     return;
