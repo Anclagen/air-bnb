@@ -1,4 +1,4 @@
-import { updateVenueModal } from "../templates/modals/venueModal";
+import { updateVenueModal } from "../templates/modals/venueModal.js";
 
 export async function loadMap(data = []) {
   //set zoom on europe
