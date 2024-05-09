@@ -2,24 +2,7 @@ import { getSession, setSession } from "../session/session.js";
 import { validateForm } from "../../form/validation/validateForm.js";
 import { errorFeedback } from "../../form/feedback/errorFeedback.js";
 import { updateProfile } from "../../api/profile/update.js";
-import { Profile } from "../../../pages/profile/index.js";
-
-// Restrictions
-// If set, the bio value must be less than 160 characters.
-// If set, the avatar.url value must be a valid and accessible URL.
-// If set, the avatar.alt value must be less than 120 characters. Defaults to empty string (""). Requires avatar.url to be set.
-// If set, the banner.url value must be a valid and accessible URL.
-// If set, the banner.alt value must be less than 120 characters. Defaults to empty string (""). Requires banner.url to be set.
-
-//quickly check if the url is valid, might not check its an image though
-function validateUrl(url) {
-  try {
-    new URL(url);
-    return true;
-  } catch (error) {
-    return false;
-  }
-}
+import { validateUrl } from "../../form/validation/validateUrl.js";
 
 function updateProfileModal(user) {
   const bio = $("#profileUpdateBio");
@@ -50,38 +33,7 @@ export async function updateProfileFormHandler() {
       const bannerUrl = $("#profileUpdateBannerUrl");
       const bannerAlt = $("#profileUpdateBannerAlt");
 
-      const isValid = validateForm([
-        {
-          id: "profileUpdateBio",
-          feedbackId: "profileUpdateBioFeedback",
-          validate: (bio) => bio.length <= 160,
-          errorMessage: "Bio must be less than 160 characters.",
-        },
-        {
-          id: "profileUpdateAvatarUrl",
-          feedbackId: "profileUpdateAvatarUrlFeedback",
-          validate: (avatarUrl) => !avatarUrl || validateUrl(avatarUrl),
-          errorMessage: "Invalid URL.",
-        },
-        {
-          id: "profileUpdateAvatarAlt",
-          feedbackId: "profileUpdateAvatarAltFeedback",
-          validate: (avatarAlt) => avatarAlt.length <= 120,
-          errorMessage: "Alt text must be less than 120 characters.",
-        },
-        {
-          id: "profileUpdateBannerUrl",
-          feedbackId: "profileUpdateBannerUrlFeedback",
-          validate: (bannerUrl) => !bannerUrl || validateUrl(bannerUrl),
-          errorMessage: "Invalid URL.",
-        },
-        {
-          id: "profileUpdateBannerAlt",
-          feedbackId: "profileUpdateBannerAltFeedback",
-          validate: (bannerAlt) => bannerAlt.length <= 120,
-          errorMessage: "Alt text must be less than 120 characters.",
-        },
-      ]);
+      const isValid = validateForm(schema);
 
       if (!isValid) {
         return;
@@ -113,3 +65,36 @@ export async function updateProfileFormHandler() {
     console.log("Error: " + error);
   }
 }
+
+const schema = [
+  {
+    id: "profileUpdateBio",
+    feedbackId: "profileUpdateBioFeedback",
+    validate: (bio) => bio.length <= 160,
+    errorMessage: "Bio must be less than 160 characters.",
+  },
+  {
+    id: "profileUpdateAvatarUrl",
+    feedbackId: "profileUpdateAvatarUrlFeedback",
+    validate: (avatarUrl) => !avatarUrl || validateUrl(avatarUrl),
+    errorMessage: "Invalid URL.",
+  },
+  {
+    id: "profileUpdateAvatarAlt",
+    feedbackId: "profileUpdateAvatarAltFeedback",
+    validate: (avatarAlt) => avatarAlt.length <= 120,
+    errorMessage: "Alt text must be less than 120 characters.",
+  },
+  {
+    id: "profileUpdateBannerUrl",
+    feedbackId: "profileUpdateBannerUrlFeedback",
+    validate: (bannerUrl) => !bannerUrl || validateUrl(bannerUrl),
+    errorMessage: "Invalid URL.",
+  },
+  {
+    id: "profileUpdateBannerAlt",
+    feedbackId: "profileUpdateBannerAltFeedback",
+    validate: (bannerAlt) => bannerAlt.length <= 120,
+    errorMessage: "Alt text must be less than 120 characters.",
+  },
+];
