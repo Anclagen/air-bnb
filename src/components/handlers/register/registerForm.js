@@ -1,5 +1,5 @@
-import { register } from "../../api/register.js";
-import { login } from "../../api/login.js";
+import { register } from "../../api/auth/register.js";
+import { login } from "../../api/auth/login.js";
 import { setSession } from "../session/session.js";
 import { validateForm } from "../../form/validation/validateForm.js";
 import { validateNoroffEmail } from "../../form/validation/validateNoroffEmail.js";

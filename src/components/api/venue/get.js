@@ -1,4 +1,4 @@
-import { apiBaseUrl } from "../../data/constants.js";
+import { apiBaseUrl } from "../../../data/constants.js";
 
 /**
  * Fetches venues from the API, with optional parameters

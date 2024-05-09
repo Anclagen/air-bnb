@@ -1,5 +1,5 @@
 import { venueCard } from "../../components/cards/venueCard.js";
-import { getVenues } from "../../components/api/getVenues.js";
+import { getVenues } from "../../components/api/venue/get.js";
 import { venueLoadingCard } from "../../components/cards/venueLoadingCard.js";
 
 export async function Home() {

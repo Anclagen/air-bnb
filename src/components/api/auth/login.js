@@ -1,4 +1,4 @@
-import { apiBaseUrl } from "../../data/constants.js";
+import { apiBaseUrl } from "../../../data/constants.js";
 
 export async function login(email, password) {
   try {

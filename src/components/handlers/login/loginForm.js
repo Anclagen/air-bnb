@@ -1,4 +1,4 @@
-import { login } from "../../api/login.js";
+import { login } from "../../api/auth/login.js";
 import { setSession } from "../session/session.js";
 import { validateForm } from "../../form/validation/validateForm.js";
 import { validateNoroffEmail } from "../../form/validation/validateNoroffEmail.js";
