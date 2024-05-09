@@ -75,6 +75,7 @@ export async function Profile() {
   });
 
   data.venues.forEach((venue) => {
+    venue.owner = { name: user.name };
     venues.append(venueCard(venue));
   });
 }

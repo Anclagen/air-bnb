@@ -354,8 +354,270 @@
     <!-- Booking Delete -->
 
     <!-- Create Venue Modal -->
+    <div class="modal fade" id="createVenueModal" tabindex="-1" aria-labelledby="createVenueModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-teal position-relative">
+            <h1 class="modal-title fs-5 text-black mx-auto">Create Venue</h1>
+            <button type="button" class="me-3 position-absolute top-50 end-0 translate-middle-y p-2 border-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+              </svg>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="createVenueForm" novalidate>
+              <div class="col-12">
+                <label for="createVenueName" class="form-label visually-hidden">Name</label>
+                <input type="text" class="form-control" id="createVenueName" placeholder="Name" required />
+                <div id="createVenueNameFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueDescription" class="form-label visually-hidden">Description</label>
+                <textarea class="form-control" id="createVenueDescription" placeholder="Description" required></textarea>
+                <div id="createVenueDescriptionFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueMediaUrl" class="form-label visually-hidden">Media URL</label>
+                <input type="url" class="form-control" id="createVenueMediaUrl" placeholder="Media URL" required />
+                <div id="createVenueMediaUrlFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueMediaAlt" class="form-label visually-hidden">Media Alt</label>
+                <input type="text" class="form-control" id="createVenueMediaAlt" placeholder="Media Alt" required />
+                <div id="createVenueMediaAltFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenuePrice" class="form-label visually-hidden">Price</label>
+                <input type="number" class="form-control" id="createVenuePrice" placeholder="Price" required />
+                <div id="createVenuePriceFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueMaxGuests" class="form-label visually-hidden">Max Guests</label>
+                <input type="number" class="form-control" id="createVenueMaxGuests" placeholder="Max Guests" required />
+                <div id="createVenueMaxGuestsFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueRating" class="form-label visually-hidden">Rating</label>
+                <input type="number" class="form-control" id="createVenueRating" placeholder="Rating" required />
+                <div id="createVenueRatingFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueMetaWifi" class="form-label visually-hidden">Wifi</label>
+                <select class="form-select" id="createVenueMetaWifi" required>
+                  <option selected disabled value="">Wifi:</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <div id="createVenueMetaWifiFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueMetaParking" class="form-label visually-hidden">Parking</label>
+                <select class="form-select" id="createVenueMetaParking" required>
+                  <option selected disabled value="">Parking:</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <div id="createVenueMetaParkingFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueMetaBreakfast" class="form-label visually-hidden">Breakfast</label>
+                <select class="form-select" id="createVenueMetaBreakfast" required>
+                  <option selected disabled value="">Breakfast:</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <div id="createVenueMetaBreakfastFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueMetaPets" class="form-label visually-hidden">Pets</label>
+                <select class="form-select" id="createVenueMetaPets" required>
+                  <option selected disabled value="">Pets:</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <div id="createVenueMetaPetsFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueAddress" class="form-label visually-hidden">Address</label>
+                <input type="text" class="form-control" id="createVenueAddress" placeholder="Address" required />
+                <div id="createVenueAddressFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueCity" class="form-label visually-hidden">City</label>
+                <input type="text" class="form-control" id="createVenueCity" placeholder="City" required />
+                <div id="createVenueCityFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueZip" class="form-label visually-hidden">Zip</label>
+                <input type="text" class="form-control" id="createVenueZip" placeholder="Zip" required />
+                <div id="createVenueZipFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueCountry" class="form-label visually-hidden">Country</label>
+                <input type="text" class="form-control" id="createVenueCountry" placeholder="Country" required />
+                <div id="createVenueCountryFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueContinent" class="form-label visually-hidden">Continent</label>
+                <input type="text" class="form-control" id="createVenueContinent" placeholder="Continent" required />
+                <div id="createVenueContinentFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueLat" class="form-label visually-hidden">Latitude</label>
+                <input type="number" class="form-control" id="createVenueLat" placeholder="Latitude" required />
+                <div id="createVenueLatFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="createVenueLng" class="form-label visually-hidden">Longitude</label>
+                <input type="number" class="form-control" id="createVenueLng" placeholder="Longitude" required />
+                <div id="createVenueLngFeedback"></div>
+              </div>
+              <div class="col-12 error" id="createVenueFormError"></div>
+              <div class="col-12 text-center">
+                <button class="btn btn-primary" type="submit">Create Venue</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer bg-teal">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Update Venue Modal -->
+    <div class="modal fade" id="updateVenueModal" tabindex="-1" aria-labelledby="updateVenueModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-teal position-relative">
+            <h1 class="modal-title fs-5 text-black mx-auto">Update Venue</h1>
+            <button type="button" class="me-3 position-absolute top-50 end-0 translate-middle-y p-2 border-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+              </svg>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="updateVenueForm" novalidate>
+              <div class="col-12">
+                <label for="updateVenueName" class="form-label visually-hidden">Name</label>
+                <input type="text" class="form-control" id="updateVenueName" placeholder="Name" required />
+                <div id="updateVenueNameFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueDescription" class="form-label visually-hidden">Description</label>
+                <textarea class="form-control" id="updateVenueDescription" placeholder="Description" required></textarea>
+                <div id="updateVenueDescriptionFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueMediaUrl" class="form-label visually-hidden">Media URL</label>
+                <input type="url" class="form-control" id="updateVenueMediaUrl" placeholder="Media URL" required />
+                <div id="updateVenueMediaUrlFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueMediaAlt" class="form-label visually-hidden">Media Alt</label>
+                <input type="text" class="form-control" id="updateVenueMediaAlt" placeholder="Media Alt" required />
+                <div id="updateVenueMediaAltFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenuePrice" class="form-label visually-hidden">Price</label>
+                <input type="number" class="form-control" id="updateVenuePrice" placeholder="Price" required />
+                <div id="updateVenuePriceFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueMaxGuests" class="form-label visually-hidden">Max Guests</label>
+                <input type="number" class="form-control" id="updateVenueMaxGuests" placeholder="Max Guests" required />
+                <div id="updateVenueMaxGuestsFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueRating" class="form-label visually-hidden">Rating</label>
+                <input type="number" class="form-control" id="updateVenueRating" placeholder="Rating" required />
+                <div id="updateVenueRatingFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueMetaWifi" class="form-label visually-hidden">Wifi</label>
+                <select class="form-select" id="updateVenueMetaWifi" required>
+                  <option selected disabled value="">Wifi:</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <div id="updateVenueMetaWifiFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueMetaParking" class="form-label visually-hidden">Parking</label>
+                <select class="form-select" id="updateVenueMetaParking" required>
+                  <option selected disabled value="">Parking:</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <div id="updateVenueMetaParkingFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueMetaBreakfast" class="form-label visually-hidden">Breakfast</label>
+                <select class="form-select" id="updateVenueMetaBreakfast" required>
+                  <option selected disabled value="">Breakfast:</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <div id="updateVenueMetaBreakfastFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueMetaPets" class="form-label visually-hidden">Pets</label>
+                <select class="form-select" id="updateVenueMetaPets" required>
+                  <option selected disabled value="">Pets:</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+                <div id="updateVenueMetaPetsFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueAddress" class="form-label visually-hidden">Address</label>
+                <input type="text" class="form-control" id="updateVenueAddress" placeholder="Address" required />
+                <div id="updateVenueAddressFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueCity" class="form-label visually-hidden">City</label>
+                <input type="text" class="form-control" id="updateVenueCity" placeholder="City" required />
+                <div id="updateVenueCityFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueZip" class="form-label visually-hidden">Zip</label>
+                <input type="text" class="form-control" id="updateVenueZip" placeholder="Zip" required />
+                <div id="updateVenueZipFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueCountry" class="form-label visually-hidden">Country</label>
+                <input type="text" class="form-control" id="updateVenueCountry" placeholder="Country" required />
+                <div id="updateVenueCountryFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueContinent" class="form-label visually-hidden">Continent</label>
+                <input type="text" class="form-control" id="updateVenueContinent" placeholder="Continent" required />
+                <div id="updateVenueContinentFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueLat" class="form-label visually-hidden">Latitude</label>
+                <input type="number" class="form-control" id="updateVenueLat" placeholder="Latitude" required />
+                <div id="updateVenueLatFeedback"></div>
+              </div>
+              <div class="col-12">
+                <label for="updateVenueLng" class="form-label visually-hidden">Longitude</label>
+                <input type="number" class="form-control" id="updateVenueLng" placeholder="Longitude" required />
+                <div id="updateVenueLngFeedback"></div>
+              </div>
+              <div class="col-12 error" id="updateVenueFormError"></div>
+              <div class="col-12 text-center">
+                <button class="btn btn-primary" type="submit">Update Venue</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer bg-teal">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Delete Venue Modal -->
 
