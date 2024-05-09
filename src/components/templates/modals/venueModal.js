@@ -1,4 +1,4 @@
-import { ratingStars } from "../ratingStars/ratingStars";
+import { ratingStars } from "../ratingStars/ratingStars.js";
 import { singleVenueMap } from "../../map/singleVenueMap.js";
 
 export function updateVenueModal(venue) {
