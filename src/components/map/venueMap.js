@@ -2,12 +2,25 @@ import { updateVenueModal } from "../templates/modals/venueModal.js";
 
 export async function loadMap(data = []) {
   //set zoom on europe
-  var mymap = L.map("venueMap").setView([51.505, -0.09], 3);
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    minZoom: 2, // Minimum zoom level
+  const osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    minZoom: 3, // Minimum zoom level
     maxZoom: 19, // Maximum zoom level
-  }).addTo(mymap);
+  });
+
+  const osmHOT = L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France",
+  });
+
+  var baseMaps = {
+    OpenStreetMap: osm,
+    "OpenStreetMap.HOT": osmHOT,
+  };
+
+  let map = L.map("venueMap", { zoomSnap: 0.25, center: [39.73, -104.99], zoom: 10, layers: [osm, osmHOT] });
+
+  var layerControl = L.control.layers(baseMaps).addTo(map);
 
   data.forEach((venue, i) => {
     let lat = venue.location.lat;
@@ -47,7 +60,7 @@ export async function loadMap(data = []) {
       </div>
     </div>`;
 
-      const marker = L.marker([lat, lng]).addTo(mymap).bindPopup(popupContent);
+      const marker = L.marker([lat, lng]).addTo(map).bindPopup(popupContent);
 
       marker.on("popupopen", function () {
         $(`#${venue.id}`).on("click", () => {
