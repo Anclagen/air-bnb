@@ -14,10 +14,10 @@ TODO:
 
 - [x] Add a user login modal.
 - [x] Login handler.
-- [ ] Validate user login.
+- [x] Validate user login.
 - [x] Add a user registration modal.
-- [ ] Registration handler.
-- [ ] Validate user registration.
+- [x] Registration handler.
+- [x] Validate user registration.
 
 **Search**
 
@@ -37,8 +37,8 @@ TODO:
 
 - [x] Profile page.
 - [ ] Add a user profile modal.
-- [ ] Add a update user profile modal.
-- [ ] Profile update handler.
+- [x] Add a update user profile modal.
+- [x] Profile update handler.
 
 **Venue**
 
