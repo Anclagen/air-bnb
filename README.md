@@ -9,6 +9,8 @@ TODO:
 - [x] Add a navbar.
 - [x] Add a footer.
 - [x] Basic Home page.
+- [ ] Sorting and filtering options.
+
 
 **Login and Registration**
 
@@ -36,7 +38,6 @@ TODO:
 **Profile**
 
 - [x] Profile page.
-- [ ] Add a user profile modal.
 - [x] Add a update user profile modal.
 - [x] Profile update handler.
 
@@ -45,15 +46,14 @@ TODO:
 - [x] Add a venue card.
 - [x] Add a venue modal.
 - [ ] Venue modal handler.
-- [ ] Rate venue handler.
-- [ ] Add create venue modal.
-- [ ] Create venue handler.
-- [ ] Validate venue creation.
-- [ ] Add a venue update modal.
+- [x] Add create venue modal.
+- [x] Create venue handler.
+- [x] Validate venue creation.
+- [x] Add a venue update modal.
 - [ ] Update venue handler.
 - [ ] Validate venue update.
-- [ ] Add a venue delete modal.
-- [ ] Delete venue handler.
+- [x] Add a venue delete modal.
+- [x] Delete venue handler.
 
 **Booking**
 
