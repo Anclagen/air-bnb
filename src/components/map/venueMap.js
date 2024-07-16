@@ -1,4 +1,6 @@
 import { updateVenueModal } from "../templates/modals/venueModal.js";
+import L from "leaflet";
+import $ from "jquery";
 
 export async function loadMap(data = []) {
   //set zoom on europe

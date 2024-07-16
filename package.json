@@ -1,22 +1,40 @@
 {
+  "devDependencies": {
+    "sass": "^1.77.6",
+    "vite": "^5.2.11"
+  },
   "name": "air-bnb",
-  "version": "0.0.1",
-  "description": "Messing around with Jquery, Bootstrap and Maps",
-  "main": "src/app.js",
+  "description": "Learning jquery and refreshing my memory of bootstrap to create an SPA of an air bnb style website.",
+  "version": "1.0.0",
+  "main": "vite.config.js",
+  "dependencies": {
+    "@maptiler/leaflet-maptilersdk": "^2.0.0",
+    "@popperjs/core": "^2.11.8",
+    "air-datepicker": "^3.5.0",
+    "bootstrap": "^5.3.3",
+    "date-fns": "^3.6.0",
+    "esbuild": "^0.20.2",
+    "jquery": "^3.7.1",
+    "leaflet": "^1.9.4",
+    "nanoid": "^3.3.7",
+    "picocolors": "^1.0.0",
+    "postcss": "^8.4.38",
+    "rollup": "^4.17.2",
+    "source-map-js": "^1.2.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Anclagen/air-bnb.git"
   },
-  "author": "Alexander",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Anclagen/air-bnb/issues"
   },
-  "homepage": "https://github.com/Anclagen/air-bnb#readme",
-  "devDependencies": {
-    "dotenv": "^16.4.5"
-  }
+  "homepage": "https://github.com/Anclagen/air-bnb#readme"
 }

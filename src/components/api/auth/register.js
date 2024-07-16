@@ -1,4 +1,5 @@
 import { apiBaseUrl } from "../../../data/constants.js";
+import $ from "jquery";
 
 export async function register(name, email, password) {
   try {

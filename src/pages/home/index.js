@@ -1,6 +1,7 @@
 import { venueCard } from "../../components/cards/venueCard.js";
 import { getVenues } from "../../components/api/venue/get.js";
 import { venueLoadingCard } from "../../components/cards/venueLoadingCard.js";
+import $ from "jquery";
 
 export async function Home() {
   try {

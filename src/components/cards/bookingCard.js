@@ -1,4 +1,5 @@
 import { updateVenueModal } from "../templates/modals/venueModal.js";
+import $ from "jquery";
 
 export function venueCard(booking) {
   const venue = booking.venue;

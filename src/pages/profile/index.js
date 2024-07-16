@@ -3,6 +3,7 @@ import { getSession } from "../../components/handlers/session/session.js";
 import { venueCard } from "../../components/cards/venueCard.js";
 import { venueLoadingCard } from "../../components/cards/venueLoadingCard.js";
 import { updateProfileModal } from "../../components/templates/modals/updateProfileModal.js";
+import $ from "jquery";
 
 export async function Profile() {
   if ($("body[data-session=false]").length > 0) {

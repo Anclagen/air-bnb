@@ -1,4 +1,5 @@
 import { getSession } from "../../handlers/session/session.js";
+import $ from "jquery";
 
 export async function deleteProfile() {
   const session = getSession();

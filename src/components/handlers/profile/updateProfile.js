@@ -4,6 +4,7 @@ import { errorFeedback } from "../../form/feedback/errorFeedback.js";
 import { updateProfile } from "../../api/profile/update.js";
 import { validateUrl } from "../../form/validation/validateUrl.js";
 import { updateProfileModal } from "../../templates/modals/updateProfileModal.js";
+import $ from "jquery";
 
 export async function updateProfileFormHandler() {
   try {

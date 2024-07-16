@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 export function venueLoadingCard() {
   return $(`
   <div class="col-sm-6 col-md-4 col-xl-3 d-flex align-items-stretch rounded  overflow-hidden">

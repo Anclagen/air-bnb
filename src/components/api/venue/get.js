@@ -1,4 +1,5 @@
 import { apiBaseUrl } from "../../../data/constants.js";
+import $ from "jquery";
 
 /**
  * Fetches venues from the API, with optional parameters

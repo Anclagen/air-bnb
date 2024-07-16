@@ -1,5 +1,6 @@
 import { apiBaseUrl } from "../../../data/constants.js";
 import { getSession } from "../../handlers/session/session.js";
+import $ from "jquery";
 
 export async function getProfile(name = "") {
   try {

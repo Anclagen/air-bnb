@@ -1,3 +1,5 @@
+import L from "leaflet";
+
 export async function singleVenueMap(venue) {
   let lat = venue.location.lat;
   let lng = venue.location.lng;

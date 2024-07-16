@@ -1,5 +1,6 @@
 import { getSession } from "../../handlers/session/session.js";
 import { apiBaseUrl } from "../../../data/constants.js";
+import $ from "jquery";
 
 export async function updateProfile(bio, avatarUrl, avatarAlt, bannerUrl, bannerAlt) {
   try {

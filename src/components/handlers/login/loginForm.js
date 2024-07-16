@@ -3,6 +3,7 @@ import { setSession } from "../session/session.js";
 import { validateForm } from "../../form/validation/validateForm.js";
 import { validateNoroffEmail } from "../../form/validation/validateNoroffEmail.js";
 import { errorFeedback } from "../../form/feedback/errorFeedback.js";
+import $ from "jquery";
 
 export async function loginFormHandler() {
   try {

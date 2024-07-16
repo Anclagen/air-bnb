@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 export function updateProfileModal(user) {
   const bio = $("#profileUpdateBio");
   bio.val(user.bio);

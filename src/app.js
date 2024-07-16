@@ -1,13 +1,12 @@
+import $ from "jquery";
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "leaflet/dist/leaflet.css";
+import "./styles/index.scss";
 import { Router } from "./components/router/router.js";
 import { Nav } from "./components/nav/nav.js";
-import { SearchModal } from "./components/search/searchModal.js";
 import { Theme } from "./components/theme/theme.js";
-import { loginFormHandler } from "./components/handlers/login/loginForm.js";
-import { registerFormHandler } from "./components/handlers/register/registerForm.js";
-import { sessionHandler } from "./components/handlers/session/session.js";
-import { logout } from "./components/handlers/logout/logout.js";
-import { updateProfileFormHandler } from "./components/handlers/profile/updateProfile.js";
-import { createVenueFormHandler } from "./components/handlers/venue/createVenue.js";
+import { handlers } from "./components/handlers/index.js";
 
 try {
   $("document").ready(function () {
@@ -15,19 +14,12 @@ try {
       Router();
       Nav();
     }
-    // check if user is already logged in
-    sessionHandler();
+    // Modal handlers
+    handlers();
     // Router, navbar and theme setups
     Navigation();
     addEventListener("popstate", Navigation);
     Theme();
-    // Modal handlers
-    loginFormHandler();
-    registerFormHandler();
-    logout();
-    updateProfileFormHandler();
-    createVenueFormHandler();
-    SearchModal();
   });
 } catch (error) {
   console.error(error);

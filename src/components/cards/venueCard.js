@@ -2,6 +2,7 @@ import { updateVenueModal } from "../templates/modals/venueModal.js";
 import { getSession } from "../handlers/session/session.js";
 import { deleteVenue } from "../api/venue/delete.js";
 import { Router } from "../router/router.js";
+import $ from "jquery";
 
 export function venueCard(venue) {
   const user = getSession();

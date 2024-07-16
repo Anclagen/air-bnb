@@ -1,5 +1,6 @@
 import { ratingStars } from "../ratingStars/ratingStars.js";
 import { singleVenueMap } from "../../map/singleVenueMap.js";
+import $ from "jquery";
 
 export function updateVenueModal(venue) {
   const $modal = $("#venueModal");

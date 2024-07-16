@@ -1,6 +1,7 @@
 import { Home } from "../../pages/home/index.js";
 import { Profile } from "../../pages/profile/index.js";
 import { Map } from "../../pages/map/index.js";
+import $ from "jquery";
 
 export function Router() {
   // Clear the root-main element using jQuery empty method as it removes all event handlers and DOM elements

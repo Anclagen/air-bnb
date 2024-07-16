@@ -4,6 +4,7 @@ import { validateUrl } from "../../form/validation/validateUrl.js";
 import { errorFeedback } from "../../form/feedback/errorFeedback.js";
 import { updateVenueModal } from "../../templates/modals/venueModal.js";
 import { Router } from "../../router/router.js";
+import $ from "jquery";
 
 export async function createVenueFormHandler() {
   try {

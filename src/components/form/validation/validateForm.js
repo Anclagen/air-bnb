@@ -1,4 +1,5 @@
 import { errorFeedback } from "../feedback/errorFeedback.js";
+import $ from "jquery";
 
 export function validateForm(fields) {
   let isValid = true;

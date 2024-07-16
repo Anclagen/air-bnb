@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 //use jquery
 export function sessionHandler() {
   // Check if the user is logged in previously by checking local for a user session object
