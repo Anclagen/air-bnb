@@ -12,6 +12,7 @@
     "@popperjs/core": "^2.11.8",
     "air-datepicker": "^3.5.0",
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "date-fns": "^3.6.0",
     "esbuild": "^0.20.2",
     "jquery": "^3.7.1",

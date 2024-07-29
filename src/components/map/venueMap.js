@@ -2,22 +2,21 @@ import { updateVenueModal } from "../templates/modals/venueModal.js";
 import L from "leaflet";
 import $ from "jquery";
 import { wifi, noWifi, parking, noParking, food, noFood, pet, noPet } from "../../icons/index.js";
-import { min } from "date-fns";
 
 export async function loadMap(data = []) {
-  const southWest = L.latLng(-85, -180);
-  const northEast = L.latLng(85, 180);
-  const bounds = L.latLngBounds(southWest, northEast);
-  //set zoom on europe
+  const southWest = L.latLng(-140, -240);
+  const northEast = L.latLng(140, 240);
+  const bounds = L.latLngBounds(southWest, northEast); // not working as intended prevents viewing of tooltips near top of map.
+
   const osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    minZoom: 3, // Minimum zoom level
-    maxZoom: 5, // Maximum zoom level
-    noWrap: true, // No wrapping of the map
+    minZoom: 2,
+    maxZoom: 15,
+    noWrap: true,
   });
 
   const osmHOT = L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
-    minZoom: 3,
-    maxZoom: 5,
+    minZoom: 2,
+    maxZoom: 15,
     attribution: "© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France",
     noWrap: true,
   });
@@ -27,7 +26,7 @@ export async function loadMap(data = []) {
     "OpenStreetMap.HOT": osmHOT,
   };
 
-  let map = L.map("venueMap", { zoomSnap: 0.25, center: [50.0, 13.99], minZoom: 3, maxZoom: 5, maxBounds: bounds, maxBoundsViscosity: 1.0, layers: [osm, osmHOT], worldCopyJump: false });
+  let map = L.map("venueMap", { zoomSnap: 0.25, center: [50.0, 13.99], minZoom: 2, maxZoom: 15, layers: [osm, osmHOT], worldCopyJump: false });
 
   // Display the current zoom level
   const zoomLevelElement = document.getElementById("zoom-level");
@@ -42,12 +41,14 @@ export async function loadMap(data = []) {
   map.on("zoomend", updateZoomLevel);
   updateZoomLevel();
 
-  var layerControl = L.control.layers(baseMaps).addTo(map);
+  L.control.layers(baseMaps).addTo(map);
   let markersGroup = L.layerGroup().addTo(map);
 
-  data.forEach((venue, i) => {
+  let locationEnhanced = data.map((venue) => {
     let lat = venue.location.lat;
     let lng = venue.location.lng;
+
+    let i = Math.floor(Math.random() * 10);
 
     // If lat and lng are 0, generate random coordinates for Europe or America
     if ((lat === 0 && lng === 0) || (lat === null && lng === null)) {
@@ -61,8 +62,16 @@ export async function loadMap(data = []) {
         lng = Math.random() * (-66 - -125) - 125; // Longitude between -125 and -66
       }
     }
-    if (lat || lng) {
-      var popupContent = `<div class="card w-100 marker-card">
+
+    return { ...venue, location: { ...venue.location, lat, lng } };
+  });
+
+  function addMarkers(data, L, markersGroup) {
+    data.forEach((venue) => {
+      let lat = venue.location.lat;
+      let lng = venue.location.lng;
+      if (lat || lng) {
+        var popupContent = `<div class="card w-100 marker-card">
       ${venue.media[0] ? `<img src="${venue.media[0].url}" class="card-img-top-marker" alt="${venue.name}" />` : ""}
       <div class="card-body">
         <h5 class="card-title">${venue.name}</h5>
@@ -73,30 +82,40 @@ export async function loadMap(data = []) {
       </div>
     </div>`;
 
-      const marker = L.marker([lat, lng]).bindPopup(popupContent);
-      markersGroup.addLayer(marker);
+        const marker = L.marker([lat, lng]).bindPopup(popupContent);
+        markersGroup.addLayer(marker);
 
-      marker.on("popupopen", function () {
-        $(`#${venue.id}`).on("click", () => {
-          updateVenueModal(venue);
+        marker.on("popupopen", function () {
+          $(`#${venue.id}`).on("click", () => {
+            updateVenueModal(venue);
+          });
         });
-      });
-    }
-  });
+      }
+    });
+  }
+
+  addMarkers(locationEnhanced, L, markersGroup);
+
+  // clear markers
+  function clearMarkers(markersGroup) {
+    markersGroup.clearLayers();
+  }
 
   function filterMarkers(data, L, markersGroup) {
     let options = {
-      wifi: document.getElementById("wifi").checked,
-      parking: document.getElementById("parking").checked,
-      breakfast: document.getElementById("breakfast").checked,
-      pets: document.getElementById("pets").checked,
-      guests: document.getElementById("guests").value,
-      guestsStrict: document.getElementById("guests-strict").checked, //exact match guest numbers
-      maxGuestOverFlow: document.getElementById("max-guest-overflow").value, // number over the guest number
-      minPrice: document.getElementById("min-price").value,
-      maxPrice: document.getElementById("max-price").value,
-      minRating: document.getElementById("min-rating").value,
+      wifi: $("#wifi").is(":checked"),
+      parking: $("#parking").is(":checked"),
+      breakfast: $("#breakfast").is(":checked"),
+      pets: $("#pets").is(":checked"),
+      guests: Number($("#guests").val()),
+      guestsStrict: $("#guestsStrict").is(":checked"), // exact match guest numbers
+      maxGuestOverFlow: Number($("#maxGuestOverflow").val()), // number over the guest number
+      minPrice: Number($("#minPrice").val()),
+      maxPrice: Number($("#maxPrice").val()),
+      minRating: Number($("#minRating").val()),
     };
+
+    console.log($("#wifi").val());
 
     let filteredData = data.filter((venue) => {
       if (options.wifi && !venue.meta.wifi) {
@@ -117,7 +136,7 @@ export async function loadMap(data = []) {
       if (options.guestsStrict && venue.maxGuests !== options.guests) {
         return false;
       }
-      if (options.maxGuestOverFlow && venue.maxGuests < options.guests + options.maxGuestOverFlow) {
+      if (!options.guestsStrict && options.maxGuestOverFlow && venue.maxGuests > options.guests + options.maxGuestOverFlow) {
         return false;
       }
       if (options.minPrice && venue.price < options.minPrice) {
@@ -131,7 +150,20 @@ export async function loadMap(data = []) {
       }
       return true;
     });
+
+    clearMarkers(markersGroup);
+    console.log(filteredData);
+    console.log(options);
+    addMarkers(filteredData, L, markersGroup);
   }
+
+  //filter form
+  const filterForm = $("#filterForm");
+  filterForm.on("change", async (event) => {
+    event.preventDefault();
+    console.log("filtering");
+    filterMarkers(locationEnhanced, L, markersGroup);
+  });
 }
 
 const exampleData = {

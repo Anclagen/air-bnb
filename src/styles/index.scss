@@ -131,3 +131,38 @@ body[data-session="true"] [data-in-session="false"] {
   border-radius: 50%;
   margin: 5px;
 }
+
+.leaflet-controls {
+  position: absolute;
+  top: 60px;
+  right: 6px;
+  z-index: 500;
+}
+
+.leaflet-button {
+  border: #73a3a3 solid 2px;
+  background-color: white;
+  color: rgb(88, 88, 88);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 1.3rem;
+  height: 48px;
+  width: 48px;
+}
+
+.title {
+  z-index: 450;
+  top: 10px;
+  transform: translateX(-50%);
+  left: 50%;
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+}
+
+.zoom {
+  bottom: 10px;
+  top: auto;
+  left: 10px;
+}

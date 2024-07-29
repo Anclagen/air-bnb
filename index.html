@@ -631,6 +631,90 @@
         </div>
       </div>
     </div>
+    <!-- Filter results modal -->
+    <!-- let options = {
+      wifi: $("#wifi").checked,
+      parking: $("#parking").checked,
+      breakfast: $("#breakfast").checked,
+      pets: $("#pets").checked,
+      guests: $("#guests").value,
+      guestsStrict: $("#guestsStrict").checked, //exact match guest numbers
+      maxGuestOverFlow: $("#maxGuestOverflow").value, // number over the guest number
+      minPrice: $("#minPrice").value,
+      maxPrice: $("#maxPrice").value,
+      minRating: $("#minRating").value,
+    }; -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-teal position-relative">
+            <h1 class="modal-title fs-5 text-black mx-auto">Filter Results</h1>
+            <button type="button" class="me-3 position-absolute top-50 end-0 translate-middle-y p-2 border-0 bg-transparent" data-bs-dismiss="modal" aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+              </svg>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="filterForm" novalidate>
+              <div class="col-12">
+                <label for="wifi" class="form-label">Wifi</label>
+                <input type="checkbox" class="form-check-input" id="wifi" />
+              </div>
+              <div class="col-12">
+                <label for="parking" class="form-label">Parking</label>
+                <input type="checkbox" class="form-check-input" id="parking" />
+              </div>
+              <div class="col-12">
+                <label for="breakfast" class="form-label">Breakfast</label>
+                <input type="checkbox" class="form-check-input" id="breakfast" />
+              </div>
+              <div class="col-12">
+                <label for="pets" class="form-label">Pets</label>
+                <input type="checkbox" class="form-check-input" id="pets" />
+              </div>
+              <div class="col-12">
+                <label for="guests" class="form-label">Guests</label>
+                <input type="number" class="form-control" id="guests" />
+              </div>
+              <div class="col-12">
+                <label for="guestsStrict" class="form-label">Exact Match Guest Numbers</label>
+                <input type="checkbox" class="form-check-input" id="guestsStrict" />
+              </div>
+              <div class="col-12">
+                <label for="maxGuestOverflow" class="form-label">Max Number Over the Guest Number</label>
+                <input type="number" class="form-control" id="maxGuestOverflow" />
+              </div>
+              <div class="col-12">
+                <label for="minPrice" class="form-label">Minimum Price</label>
+                <input type="number" class="form-control" id="minPrice" />
+              </div>
+              <div class="col-12">
+                <label for="maxPrice" class="form-label">Maximum Price</label>
+                <input type="number" class="form-control" id="maxPrice" />
+              </div>
+              <div class="col-12">
+                <label for="minRating" class="form-label">Minimum Rating</label>
+                <select class="form-select" id="minRating">
+                  <option selected value="0">None</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div>
+                <button type="reset" class="btn btn-primary" id="clearFilter">Clear Filter</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer bg-teal">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer class="bg-teal p-5"><p class="text-center text-black">Copyright 2024 Holidaze</p></footer>
   </body>
 </html>

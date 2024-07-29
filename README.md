@@ -11,7 +11,6 @@ TODO:
 - [x] Basic Home page.
 - [ ] Sorting and filtering options.
 
-
 **Login and Registration**
 
 - [x] Add a user login modal.
@@ -34,6 +33,7 @@ TODO:
 
 - [x] Add a map.
 - [x] Add a map marker card.
+- [x] Add map filters.
 
 **Profile**
 

@@ -6,14 +6,12 @@ import L from "leaflet";
 export function Map() {
   const root = $("#root-main");
   let content = `<section>
-      <h1>Map</h1>
-        <div id="zoom-level">Zoom Level: </div>
-      <div class="position-relative">
-      <div class="position-absolute top-0 left-0 z-1 p-2">
-        <button class="btn btn-primary" id="back">Back</button>
+      <div class="z-2 position-relative" id="venueMap" class="display-relative" style="height: calc(100vh - 75px);">
+        <h1 class="leaflet-controls title" >Global Venues</h1>
+        <div class="leaflet-controls zoom" id="zoom-level">Zoom Level: </div>
+        <button class="leaflet-controls leaflet-button" data-bs-toggle="modal" data-bs-target="#filterModal"><span class="visually-hidden">Filter</span> <i class="bi bi-ui-checks"></i></button>
       </div>
-      <div class="z-2" id="venueMap" style="height: 100vh;"></div>
-      <div>
+ 
     </section>`;
   root.html(content);
 
@@ -25,7 +23,7 @@ export function Map() {
       let data = response.data.filter((venue) => {
         return !venue.name.toLowerCase().includes("string") && !venue.name.toLowerCase().includes("test") && !venue.description.toLowerCase().includes("test");
       });
-      console.log(data);
+      console.log(response, data);
       loadMap(data);
     },
     error: function (error) {
