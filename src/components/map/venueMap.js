@@ -66,32 +66,53 @@ export async function loadMap(data = []) {
     return { ...venue, location: { ...venue.location, lat, lng } };
   });
 
+  // function addMarkers(data, L, markersGroup) {
+  //   data.forEach((venue) => {
+  //     let lat = venue.location.lat;
+  //     let lng = venue.location.lng;
+  //     if (lat || lng) {
+  //       var popupContent = `<div class="card w-100 marker-card">
+  //     ${venue.media[0] ? `<img src="${venue.media[0].url}" class="card-img-top-marker" alt="${venue.name}" />` : ""}
+  //     <div class="card-body">
+  //       <h5 class="card-title">${venue.name}</h5>
+  //       <p class="card-text">${venue.description}</p>
+  //       <p class="card-text">Max Guests: ${venue.maxGuests}</p>
+  //       <p> ${venue.meta.wifi ? wifi : noWifi} ${venue.meta.parking ? parking : noParking} ${venue.meta.breakfast ? food : noFood} ${venue.meta.pets ? pet : noPet}</p>
+  //       <button class="btn btn-primary p-2 px-3 ms-2" id="${venue.id}" data-bs-toggle="modal" data-bs-target="#venueModal">view</button>
+  //       <a href="https://www.google.com/maps/search/?api=1&query=${lat}%2C${lng}" target="blank" class="btn btn-primary p-2 px-3 ms-2">G-Maps</a>
+  //       </div>
+  //   </div>`;
+
+  //       const marker = L.marker([lat, lng]).bindPopup(popupContent);
+  //       markersGroup.addLayer(marker);
+
+  //       marker.on("popupopen", function () {
+  //         $(`#${venue.id}`).on("click", () => {
+  //           updateVenueModal(venue);
+  //         });
+  //       });
+  //     }
+  //   });
+  // }
+
   function addMarkers(data, L, markersGroup) {
     data.forEach((venue) => {
       let lat = venue.location.lat;
       let lng = venue.location.lng;
       if (lat || lng) {
-        var popupContent = `<div class="card w-100 marker-card">
-      ${venue.media[0] ? `<img src="${venue.media[0].url}" class="card-img-top-marker" alt="${venue.name}" />` : ""}
-      <div class="card-body">
-        <h5 class="card-title">${venue.name}</h5>
-        <p class="card-text">${venue.description}</p>
-        <p class="card-text">Max Guests: ${venue.maxGuests}</p>
-        <p> ${venue.meta.wifi ? wifi : noWifi} ${venue.meta.parking ? parking : noParking} ${venue.meta.breakfast ? food : noFood} ${venue.meta.pets ? pet : noPet}</p>
-        <button class="btn btn-primary p-2 px-3 ms-2" id="${venue.id}" data-bs-toggle="modal" data-bs-target="#venueModal">view</button>
-      </div>
-    </div>`;
-
-        const marker = L.marker([lat, lng]).bindPopup(popupContent);
+        const marker = L.marker([lat, lng]);
         markersGroup.addLayer(marker);
 
-        marker.on("popupopen", function () {
-          $(`#${venue.id}`).on("click", () => {
-            updateVenueModal(venue);
-          });
+        // Add modaL content
+        marker.on("click", function () {
+          updateVenueModal(venue);
         });
       }
     });
+
+    // Add data-bs-toggle and data-bs-target to the markers for the modal
+    $(".leaflet-marker-pane img").attr("data-bs-toggle", "modal");
+    $(".leaflet-marker-pane img").attr("data-bs-target", "#venueModal");
   }
 
   addMarkers(locationEnhanced, L, markersGroup);

@@ -12,13 +12,12 @@ export function sessionHandler() {
       body.attr("data-session", false);
     }
   }
-  window.addEventListener("storage", (event) => {
-    console.log(event);
-  });
+  // window.addEventListener("storage", (event) => {
+  //   console.log(event);
+  // });
 
   //jquery event listener for local storage session change
   $(window).on("storage", function (e) {
-    console.log(e.originalEvent.key);
     if (e.originalEvent.key === "session") {
       if (e.originalEvent.newValue) {
         body.attr("data-session", true);

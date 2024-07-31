@@ -27,6 +27,7 @@ export async function singleVenueMap(venue) {
     <p class="card-text">${venue.description}</p>
     <p class="card-text">Max Guests: ${venue.maxGuests}</p>
     <button class="btn btn-primary p-2 px-3 ms-2" id="${venue.id}" data-bs-toggle="modal" data-bs-target="#venueModal">view</button>
+    <a href="https://www.google.com/maps/search/?api=1&query=${lat}%2C${lng}" target="blank" class="btn btn-primary p-2 px-3 ms-2">G-Maps</a>
   </div>
 </div>`;
 
