@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 export async function SearchModal() {
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
   const form = $(".searchModalForm");

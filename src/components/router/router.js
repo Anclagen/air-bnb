@@ -1,9 +1,11 @@
 import { Home } from "../../pages/home/index.js";
 import { Profile } from "../../pages/profile/index.js";
 import { Map } from "../../pages/map/index.js";
+import $ from "jquery";
 
 export function Router() {
-  // Render page
+  // Clear the root-main element using jQuery empty method as it removes all event handlers and DOM elements
+  $("#root-main").off().empty();
   switch (window.location.hash) {
     case "":
       Home();
@@ -15,7 +17,6 @@ export function Router() {
       Map();
       return;
     default:
-      console.log("default");
       Home();
       return;
   }

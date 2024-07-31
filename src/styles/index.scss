@@ -61,6 +61,15 @@ body[data-bs-theme="light"] #theme:hover,
 body[data-bs-theme="light"] #search:hover {
   color: #eeeeee;
 }
+body[data-session="false"] [data-in-session="false"],
+body[data-session="true"] [data-in-session="true"] {
+  display: block;
+}
+
+body[data-session="false"] [data-in-session="true"],
+body[data-session="true"] [data-in-session="false"] {
+  display: none;
+}
 
 .banner {
   background-image: url("/src/assets/images/AI-sunset-beach-properties.jpg");
@@ -74,6 +83,7 @@ body[data-bs-theme="light"] #search:hover {
   text-align: center;
 }
 
+.card-title,
 .card-text {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -81,8 +91,78 @@ body[data-bs-theme="light"] #search:hover {
   overflow: hidden;
 }
 
+.card-title {
+  -webkit-line-clamp: 2;
+}
+
+.card-img-top-marker,
 .card-img-top {
-  height: 170px;
+  height: 300px;
   object-fit: cover;
   max-height: 100%;
+}
+
+.card-img-top-marker {
+  height: 200px;
+  width: 100%;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  line-height: 1;
+  font-size: 14px;
+  font-size: 1.08333em;
+  min-height: 1px;
+}
+
+.leaflet-popup-content-wrapper {
+  padding: 0;
+  overflow: hidden;
+}
+
+.leaflet-popup-content-wrapper .card-body {
+  width: 260px;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: white;
+  background-color: rgb(34, 61, 67, 0.5);
+  border: white solid 1px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.leaflet-controls {
+  position: absolute;
+  top: 60px;
+  right: 6px;
+  z-index: 500;
+}
+
+.leaflet-button {
+  border: #73a3a3 solid 2px;
+  background-color: white;
+  color: rgb(88, 88, 88);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 1.3rem;
+  height: 48px;
+  width: 48px;
+}
+
+.title {
+  z-index: 450;
+  top: 10px;
+  transform: translateX(-50%);
+  left: 50%;
+  font-size: 2rem;
+  font-weight: 700;
+  color: black;
+}
+
+.zoom {
+  bottom: 10px;
+  top: auto;
+  left: 10px;
 }
